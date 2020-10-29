@@ -14,21 +14,21 @@ import by.grodno.pvt.site.webappsample.service.UserService;
 
 public class JstlServlet2 extends HttpServlet {
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			UserService.getService()
-					.addUser(
-							new User(null, 
-									req.getParameter("firstName"), 
-									req.getParameter("lastName"),
-							        new SimpleDateFormat("yyy-MM-dd")
-							            .parse(req.getParameter("birthdate")),
-							        Boolean.valueOf(req.getParameter("male"))));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		resp.sendRedirect("/webappsample/jstl1");
-	}
-	
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            User user = new User(null,
+                    req.getParameter("firstName"),
+                    req.getParameter("lastName"),
+                    new SimpleDateFormat("yyy-MM-dd")
+                            .parse(req.getParameter("birthdate")),
+                    Boolean.valueOf(req.getParameter("male")));
+            user.setSalary(Double.valueOf(req.getParameter("salary")));
+            UserService.getService().addUser(user);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        resp.sendRedirect("/webappsample/jstl1");
+    }
+
 }

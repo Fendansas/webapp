@@ -1,4 +1,9 @@
 <html>
+ <head>
+        <meta charset="UTF-8">
+        <title>Super app!</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
 <body>
 	<jsp:useBean id="obj"
 		class="by.grodno.pvt.site.webappsample.OurTestJavaBean">
